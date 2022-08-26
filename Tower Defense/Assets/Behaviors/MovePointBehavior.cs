@@ -1,12 +1,20 @@
+using System.Collections;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
 public class MovePointBehavior : MonoBehaviour
 {
+    //to be triggered, other object needs a collider and a rigidbody, this object needs a collider with is trigger on
     public Vector3 nextPos;
     public GameObject nextPosObj;
     void Start()
     {
+        StartCoroutine(SetNextPos(0.1f));
+    }
+
+    IEnumerator SetNextPos(float wait)
+    {
+        yield return new WaitForSeconds(wait);
         nextPos = nextPosObj.gameObject.transform.position;
     }
 
