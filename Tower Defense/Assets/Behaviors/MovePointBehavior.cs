@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using Vector3 = UnityEngine.Vector3;
 
 public class MovePointBehavior : MonoBehaviour
 {
