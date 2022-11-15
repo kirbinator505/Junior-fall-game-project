@@ -27,12 +27,12 @@ public class TargetingBehavior : MonoBehaviour
         rangeSphere.radius = range;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         
     }
 
-    private void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other)
     {
         
     }
