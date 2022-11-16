@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 779302070}
   m_Layer: 0
   m_Name: Enemy Prototype
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -583,7 +583,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 0
@@ -632,6 +632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyBase: {fileID: 0}
+  lvl: 0
   onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -711,14 +712,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.27795407, y: -0, z: -0, w: 0.96059436}
+  m_LocalPosition: {x: 0, y: 3.36, z: -3.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 32.276, y: 0, z: 0}
 --- !u!1001 &1265981045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -998,9 +999,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1918628773}
   - component: {fileID: 1918628772}
-  - component: {fileID: 1918628771}
   - component: {fileID: 1918628774}
   - component: {fileID: 1918628775}
+  - component: {fileID: 1918628771}
+  - component: {fileID: 1918628776}
   m_Layer: 0
   m_Name: Tower Prototype
   m_TagString: Untagged
@@ -1020,7 +1022,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35ff2894b0c93d34784e0a93afc4ef60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerBase: {fileID: 0}
+  enteredObjs: []
+  target: {fileID: 0}
+  targetLvl: 0
 --- !u!135 &1918628772
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1075,10 +1079,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 1918628770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35ff2894b0c93d34784e0a93afc4ef60, type: 3}
+  m_Script: {fileID: 11500000, guid: a41738040b7edaa4c968a2e2ad6d8bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   towerBase: {fileID: 0}
+--- !u!114 &1918628776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918628770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 033132cbfbc765a48905bbcdd160e893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  repeatCountEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  startCountEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  endCountEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  repeatUntilFalse:
+    m_PersistentCalls:
+      m_Calls: []
+  canRun: 0
+  counterNum: {fileID: 0}
+  delay: 3
 --- !u!1001 &1231262401341882134
 PrefabInstance:
   m_ObjectHideFlags: 0

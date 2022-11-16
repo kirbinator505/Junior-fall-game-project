@@ -5,6 +5,7 @@ public class EnemyStatBehavior : MonoBehaviour
 {
     public EnemySO enemyBase;
     private int currentHealth;
+    public int lvl;
     public UnityEvent onDeathEvent;
     
     void Start()
@@ -12,9 +13,10 @@ public class EnemyStatBehavior : MonoBehaviour
         if (enemyBase != null)
         {
             currentHealth = enemyBase.health;
+            lvl = enemyBase.level;
         }
     }
-
+/*
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))
@@ -22,6 +24,7 @@ public class EnemyStatBehavior : MonoBehaviour
             TakeDamage(1);
         }
     }
+    */
 
     public void TakeDamage(int damage)
     {
