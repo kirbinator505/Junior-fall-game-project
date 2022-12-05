@@ -1025,6 +1025,23 @@ MonoBehaviour:
   enteredObjs: []
   target: {fileID: 0}
   targetLvl: 0
+  damageEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1918628771}
+        m_TargetAssemblyTypeName: TargetingBehavior, Assembly-CSharp
+        m_MethodName: DealDamage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  towerStats: {fileID: 0}
+  firingCoroutine: {fileID: 0}
 --- !u!135 &1918628772
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1109,7 +1126,19 @@ MonoBehaviour:
       m_Calls: []
   repeatUntilFalse:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   canRun: 0
   counterNum: {fileID: 0}
   delay: 3

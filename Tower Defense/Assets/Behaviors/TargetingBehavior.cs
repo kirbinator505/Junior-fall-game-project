@@ -1,18 +1,40 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(TowerStatBehavior))]
+[RequireComponent(typeof(CoroutineBehavior))]
 public class TargetingBehavior : MonoBehaviour
 {
     public List<GameObject> enteredObjs;
     public GameObject target;
     public int targetLvl;
+    public UnityEvent damageEvent;
+    public TowerStatBehavior towerStats;
+    public CoroutineBehavior firingCoroutine;
+    public delegate void TargetDelegate();
+    public TargetDelegate targetingDelegate;
+
+    public void Start()
+    {
+        towerStats = GetComponent<TowerStatBehavior>();
+        firingCoroutine = GetComponent<CoroutineBehavior>();
+        targetingDelegate = PickFirstTarget;
+    }
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
             enteredObjs.Add(other.gameObject);
+        }
+
+        targetingDelegate();
+
+        if (firingCoroutine.canRun != true)
+        {
+            firingCoroutine.canRun = true;
         }
     }
 
@@ -21,6 +43,14 @@ public class TargetingBehavior : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             enteredObjs.Remove(other.gameObject);
+        }
+        
+        targetingDelegate();
+        
+        if (enteredObjs.Count <= 0)
+        {
+            firingCoroutine.canRun = false;
+            target = null;
         }
     }
 
@@ -57,5 +87,24 @@ public class TargetingBehavior : MonoBehaviour
             target = enteredObjs[^1];
         }
     }
-    //calling the damage dealing function will be handled by a coroutine as soon as I get my tools subrepo working
+
+    public void SetToFirst()
+    {
+        targetingDelegate = PickFirstTarget;
+    }
+    
+    public void SetToLast()
+    {
+        targetingDelegate = PickLastTarget;
+    }
+    
+    public void SetToStrong()
+    {
+        targetingDelegate = PickStrongestTarget;
+    }
+
+    public void Damage()
+    {
+        target.GetComponent<EnemyStatBehavior>().TakeDamage(towerStats.towerBase.damage);
+    }
 }
